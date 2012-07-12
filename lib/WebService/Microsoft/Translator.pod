@@ -1,0 +1,111 @@
+=head1 NAME
+
+WebService::Microsoft::Translator - Perl wrapper for Microsoft Translator API
+
+=head1 SYNOPSIS
+
+  use WebService::Microsoft::Translator;
+  my $translator = WebService::Microsoft::Translator->new(
+      app_id  => $app_id,
+  );
+  warn $translator->translate(
+      from    => $from_lang,
+      to      => $to_lang,
+      text    => $text,
+  );
+
+=head1 DESCRIPTION
+
+The C<WebService::Microsoft::Translator> module is a wrapper for
+Microsoft Translator API.
+
+=head1 METHODS
+
+=over 4
+
+=item $translator = WebService::Microsoft::Translator->new(%args)
+
+Create a new instance of the translator interface.  It returns the
+newly created object.
+
+Following name-value pairs can be passed as options:
+
+=over 4
+
+=item app_id => $app_id (REQUIRED)
+
+Bing application ID used to access to the API.
+
+=item onerror => $code
+
+Error handler.
+
+=back
+
+=item $onerror = $translator->onerror
+
+=item $translator->onerror($onerror)
+
+Get or set the error handler.
+
+The error handler must be a code reference.  The code will be invoked
+when some error is detected, with name-value pairs: C<message> is a
+short text decribing the error; It might be a string returned by the
+API.  C<type> is an optional short string describing the kind of the
+error, if known.  The error handler may throw an exception, if
+desired.
+
+The default error handler C<warn>s the C<message>.
+
+=item $translated = $translator->translate(%args)
+
+Translate a text using the API.  The arguments must be given as
+name-value pairs.
+
+=over 4
+
+=item C<text> => text (REQUIRED)
+
+The input text to translate.  The value must be a (likely
+utf8-flagged) string.
+
+=item C<from> => langcode
+
+The language of the input text, in Microsoft's language code.  This
+option may be omitted for auto-detection.
+
+=item C<to> => langcode (REQUIRED)
+
+The destination language, in Microsoft's language code.
+
+=back
+
+The method returns the translated text, if available, or C<undef>,
+otherwise.  The text is utf8-flagged if necessary.
+
+=back
+
+=head1 DEVELOPMENT
+
+Latest version of the module is available from the GitHub repository:
+<https://github.com/wakaba/perl-webservice-microsoft-translator>.
+
+Tests are automatically run at Travis CI:
+<http://travis-ci.org/wakaba/perl-webservice-microsoft-translator>.
+
+Potentially outdated tarball distribution of the module might be
+available at:
+<http://wakaba.github.com/packages/perl/#WebService-Microsoft-Translator>.
+
+=head1 AUTHOR
+
+Wakaba <wakabatan@hatena.ne.jp>.
+
+=head1 LICENSE
+
+Copyright 2011-2012 Hatena <http://www.hatena.ne.jp/>.
+
+This program is free software; you can redistribute it and/or modify
+it under the same terms as Perl itself.
+
+=cut
