@@ -1,0 +1,17 @@
+{
+    main_module_name => 'WebService::Microsoft::Translator',
+    file_names => [qw(
+        lib/WebService/Microsoft/Translator.pm
+        lib/WebService/Microsoft/Translator.pod
+        sketch/translator.pl
+        t/microsoft-translator.t
+    )],
+    req_modules => {
+        'Encode' => 0,
+        'Web::UserAgent::Functions' => 0,
+    },
+    t_req_modules => {
+        'Test::More' => 0,
+        'Test::X1' => 0,
+    },
+};

@@ -30,3 +30,23 @@ test-deps: local-submodules pmb-install
 
 safetest:
 	$(PERL_ENV) $(PROVE) t/**.t
+
+# ------ Packaging ------
+
+GENERATEPM = local/generatepm/bin/generate-pm-package
+GENERATEPM_ = $(GENERATEPM) --generate-json
+
+dist: generatepm
+	$(GENERATEPM_) config/dist/webservice-microsoft-translator.pi dist/
+
+dist-wakaba-packages: local/wakaba-packages dist
+	cp dist/*.json local/wakaba-packages/data/perl/
+	cp dist/*.tar.gz local/wakaba-packages/perl/
+	cd local/generatepm && $(MAKE) lperl
+	cd local/wakaba-packages && $(MAKE) all PERL="$(abspath ./local/generatepm/perl)"
+
+local/wakaba-packages: always
+	git clone "git@github.com:wakaba/packages.git" $@ || (cd $@ && git pull)
+	cd $@ && git submodule update --init
+
+always:

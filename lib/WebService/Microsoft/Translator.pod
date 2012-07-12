@@ -85,6 +85,20 @@ otherwise.  The text is utf8-flagged if necessary.
 
 =back
 
+=head1 SEE ALSO
+
+Microsoft Translator Developer & Web Master Support
+<http://social.msdn.microsoft.com/Forums/en-US/microsofttranslator/threads/>.
+
+Microsoft Translator API - Frequently Asked Questions
+<http://social.msdn.microsoft.com/Forums/en-US/microsofttranslator/thread/c71aeddd-cc90-4228-93cc-51fb969fde09>.
+
+Microsoft Translator
+<http://msdn.microsoft.com/en-us/library/dd576287.aspx>.
+
+無償の Bing Translation APIを使用する(20110407), Takeshi Shinmura,
+<http://blogs.msdn.com/b/tashinmu/archive/2011/04/07/bing-translation-api-20110407.aspx>.
+
 =head1 DEVELOPMENT
 
 Latest version of the module is available from the GitHub repository:
@@ -98,6 +112,8 @@ available at:
 <http://wakaba.github.com/packages/perl/#WebService-Microsoft-Translator>.
 
 =head1 AUTHOR
+
+id:sano.
 
 Wakaba <wakabatan@hatena.ne.jp>.
 
